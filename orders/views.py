@@ -8,8 +8,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
 
-from .models import Order
-from .serializers import OrderSerializer, UserSerializer
+from .models import Order, Ticket
+from .serializers import OrderSerializer, UserSerializer, TicketSerializer
 
 
 class UserRegistrationView(generics.CreateAPIView):
@@ -24,5 +24,14 @@ class OrderListView(generics.ListCreateAPIView):
 class OrderDetailView(generics.RetrieveAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+class TicketListView(generics.ListCreateAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+    permission_classes = [permissions.IsAdminUser ,DjangoModelPermissions]
+
+class TicketDetailView(generics.RetrieveAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
 
 
