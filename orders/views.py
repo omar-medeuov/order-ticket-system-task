@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 
 from .models import Order, Ticket
-from .serializers import OrderSerializer, UserSerializer, TicketSerializer
+from .serializers import OrderSerializer, UserSerializer, TicketSerializer, TicketUpdateSerializer
 
 
 class UserRegistrationView(generics.CreateAPIView):
@@ -34,4 +34,7 @@ class TicketDetailView(generics.RetrieveAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
 
+class TicketUpdateView(generics.UpdateAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketUpdateSerializer
 
