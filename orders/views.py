@@ -19,7 +19,7 @@ class UserRegistrationView(generics.CreateAPIView):
 class OrderListView(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAdminUser ,DjangoModelPermissions]
+    permission_classes = [permissions.IsAdminUser ]
 
 class OrderDetailView(generics.RetrieveAPIView):
     queryset = Order.objects.all()
@@ -28,7 +28,7 @@ class OrderDetailView(generics.RetrieveAPIView):
 class TicketListView(generics.ListCreateAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
-    permission_classes = [permissions.IsAdminUser ,DjangoModelPermissions]
+    permission_classes = [permissions.IsAdminUser ]
 
 class TicketDetailView(generics.RetrieveAPIView):
     queryset = Ticket.objects.all()

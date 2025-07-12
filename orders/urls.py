@@ -13,6 +13,4 @@ urlpatterns = [
     path("<int:pk>/", OrderDetailView.as_view(), name="order_detail"),
     path("", OrderListView.as_view(), name="order_list"),
 
-
-
 ]
