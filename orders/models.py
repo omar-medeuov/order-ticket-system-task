@@ -13,7 +13,7 @@ class Order(models.Model):
      }
 
      order_id = models.IntegerField(unique=True)
-     username = models.ForeignKey(User, on_delete=models.CASCADE)
+     user = models.ForeignKey(User, on_delete=models.CASCADE, )
      phone_number = models.CharField(max_length=12)
      status = models.CharField(max_length=3, choices=STATUS_CHOICES, default="pnd")
      comment = models.TextField(blank=True, null=True)
@@ -21,13 +21,18 @@ class Order(models.Model):
 
      def __str__(self):
 
-          return self.username.username+"#" + str(self.order_id)
+          return self.user.username+"#" + str(self.order_id)
 
 
 class Ticket(models.Model):
+     STATUS_CHOICES = {
+          "opn": "opened",
+          "cls": "closed",
+     }
+
      ticket_code = models.CharField(max_length=30)
      item_code = models.CharField(max_length=30)
      order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
-     #status
+     status = models.CharField(max_length=3, choices=STATUS_CHOICES)
 
